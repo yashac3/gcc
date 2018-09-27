@@ -69,6 +69,7 @@
   p5600
   m5100
   i6400
+  lx5280
 ])
 
 (define_c_enum "unspec" [

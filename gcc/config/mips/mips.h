@@ -286,6 +286,7 @@ struct mips_cpu_info {
 				     || mips_arch == PROCESSOR_SB1A)
 #define TARGET_SR71K                (mips_arch == PROCESSOR_SR71000)
 #define TARGET_XLP                  (mips_arch == PROCESSOR_XLP)
+#define TARGET_LX5280               (mips_arch == PROCESSOR_LX5280)
 
 /* Scheduling target defines.  */
 #define TUNE_20KC		    (mips_tune == PROCESSOR_20KC)
@@ -765,7 +766,7 @@ struct mips_cpu_info {
 
 #define MIPS_ISA_LEVEL_SPEC \
   "%{" MIPS_ISA_LEVEL_OPTION_SPEC ":;: \
-     %{march=mips1|march=r2000|march=r3000|march=r3900:-mips1} \
+     %{march=mips1|march=r2000|march=r3000|march=r3900|march=lx5280:-mips1} \
      %{march=mips2|march=r6000:-mips2} \
      %{march=mips3|march=r4*|march=vr4*|march=orion|march=loongson2*:-mips3} \
      %{march=mips4|march=r8000|march=vr5*|march=rm7000|march=rm9000 \
@@ -1105,7 +1106,8 @@ struct mips_cpu_info {
 				      && (MODE) == V2SFmode))		\
 				 && !TARGET_MIPS16)
 
-#define ISA_HAS_LWL_LWR		(mips_isa_rev <= 5 && !TARGET_MIPS16)
+#define ISA_HAS_LWL_LWR		(mips_isa_rev <= 5 && !TARGET_MIPS16 \
+				  && !TARGET_LX5280)
 
 #define ISA_HAS_IEEE_754_LEGACY	(mips_isa_rev <= 5)
 
