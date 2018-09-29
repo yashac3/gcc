@@ -642,6 +642,8 @@ struct mips_cpu_info {
 	builtin_define ("__mips_no_lxc1_sxc1");				\
       if (!ISA_HAS_UNFUSED_MADD4 && !ISA_HAS_FUSED_MADD4)		\
 	builtin_define ("__mips_no_madd4");				\
+      if (ISA_HAS_LWL_LWR)		\
+	builtin_define ("__mips_has_load_store_lr");				\
     }									\
   while (0)
 
